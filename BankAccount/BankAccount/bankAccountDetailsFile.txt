@@ -1,0 +1,4 @@
+15000.00,Palash,Goa
+1000.00,Dilip,Banglore
+1000.00,Srimukh,Africa
+50000.00,Dad,Indore
