@@ -4,8 +4,6 @@
 package appletPackage;
 
 import guiPackage.HelpFrame;
-import guiPackage.MainATMFrame;
-import guiPackage.WithdrawFrame;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -38,8 +36,6 @@ public class LoginApplet extends JApplet{
 	private static final long serialVersionUID = 4321289362144417550L;
 
 	public void init(){
-		//JFrame frame = new JFrame();
-		
 		final Container pane = getContentPane();
 		pane.setLayout(new BorderLayout());
 		
@@ -71,7 +67,7 @@ public class LoginApplet extends JApplet{
 		pane.add(panelLeft, BorderLayout.WEST);
 		pane.add(panelRight, BorderLayout.EAST);
 		
-		setVisible(true);
+		//setVisible(true);
 		//pack
 		Dimension d = pane.getLayout().preferredLayoutSize(pane);
 		setSize((int)d.getWidth(),(int)d.getHeight());
@@ -87,10 +83,14 @@ public class LoginApplet extends JApplet{
 					final BankAccount current = ATMManager.accountLogin(accNo, passString);
 					if(current!=null)
 					{
-						panelLeft.setVisible(false);
 						panelRight.setVisible(false);
+						panelLeft.setVisible(false);
+						System.out.println("visible false");
+						
+						
+						
 						//pane.setLayout(new BorderLayout());
-						//make panels for  center, left and right
+						//make panels for   left and right
 
 						final JPanel panelLeft = new JPanel();
 						final JPanel panelRight = new JPanel();
@@ -125,11 +125,8 @@ public class LoginApplet extends JApplet{
 						thirdLeftButton.setFont(f2);
 						firstRightButton.setFont(f2);
 						helpButton.setFont(f2);
-
 						
-						
-						
-						
+				
 						panelLeft.add(withdrawButton);
 						panelLeft.add(secondLeftButton);
 						panelLeft.add(thirdLeftButton);
@@ -144,11 +141,9 @@ public class LoginApplet extends JApplet{
 					
 						pane.add(panelLeft, BorderLayout.WEST);
 						pane.add(panelRight, BorderLayout.EAST);
-
-						setVisible(true);
-						
-						
-						
+						panelLeft.setVisible(true);
+						panelRight.setVisible(true);						
+						System.out.println("visible true");
 						
 						//event listeners
 						withdrawButton.addActionListener(new ActionListener(){
@@ -192,28 +187,36 @@ public class LoginApplet extends JApplet{
 								panelRight.add(withdrawAmount);
 								panelRight.add(submitButton);		
 								//add to content pane
-								pane.add(panelLeft, BorderLayout.EAST);
-								pane.add(panelRight, BorderLayout.WEST);
-
-								
-								setVisible(true);
+							pane.add(panelLeft, BorderLayout.EAST);
+							pane.add(panelRight, BorderLayout.WEST);
+							setVisible(true);
 								
 								
 								submitButton.addActionListener(new ActionListener(){
 									public void actionPerformed(ActionEvent e){
+										try{
 										long amount = Long.parseLong(withdrawAmount.getText());
+										
 										if(current.withdraw(amount))
 										{
+										
 											String newBalance = String.valueOf(current.getBalance());
 											balanceAmount.setText(newBalance);
 											Component frame = null;
 											JOptionPane.showMessageDialog(frame, "Withdrawal Successful!");
-										}
+									
+											
+												
+											}
 										else
 										{
 											Component frame = null;
 											JOptionPane.showMessageDialog(frame, "Not enough balance!");
-										}
+										}}
+										catch (NumberFormatException ex){
+											Component frame = null;
+											JOptionPane.showMessageDialog(frame, "Enter digits only");
+										}	
 									}
 								});
 									}
@@ -241,5 +244,6 @@ public class LoginApplet extends JApplet{
 		}});
 		
 	}
+	
 }
 

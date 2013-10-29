@@ -20,7 +20,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class SimpleWhiteboard extends JApplet implements ActionListener {
+public class SimpleWhite extends JApplet implements ActionListener {
   /**
 	 * 
 	 */
@@ -51,21 +51,20 @@ private Color currentColor;
 	colors.add (green);
 	colors.add (blue);
 	
-	setForeground(Color.green);
+	currentColor = Color.green;
   }
   
   public void actionPerformed (ActionEvent e)
 	{
 		// If the menu item red was selected change the current color to red
 		if (e.getSource () == red)
-			setForeground(Color.red);
+			currentColor = Color.red;
 		// If the menu item blue was selected change the current color to blue
 		else if (e.getSource () == blue)
-			setForeground(Color.blue);
+			currentColor = Color.blue;
 		// If the menu item green was selected change the current color to green
 		else if (e.getSource () == green)
-			setForeground(Color.green);
-		
+			currentColor = Color.green;
 		// repaint so that the changes are made visible.
 		repaint();
 	}
@@ -89,6 +88,8 @@ protected void record(int x, int y) {
 	      int x = event.getX();
 	      int y = event.getY();
 	      Graphics g = getGraphics();
+	      g.setColor(currentColor);
+	      
 	      g.drawLine(lastX, lastY, x, y);
 	      record(x, y);
 	    }

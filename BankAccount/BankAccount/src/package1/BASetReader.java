@@ -12,6 +12,8 @@ import java.io.FileReader;
  */
 public class BASetReader {
 	
+	private BufferedReader br;
+
 	public BankAccount[] readFile(String filename)
 	
 		{
@@ -20,7 +22,7 @@ public class BASetReader {
 		String x = null;
 		try{
 			FileReader fr = new FileReader(filename);
-			BufferedReader br = new BufferedReader(fr);	
+			br = new BufferedReader(fr);	
 		
 			while((x=br.readLine())!=null)
 			{

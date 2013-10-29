@@ -5,9 +5,12 @@ import java.util.Scanner;
 
 public class BankAccountSetTester
 {
-   public static void main(String[] args)
+   private static Scanner in;
+private static ObjectInputStream oin;
+
+public static void main(String[] args)
    {
-      Scanner in = new Scanner(System.in);
+      in = new Scanner(System.in);
       //BASetReader reader = new BASetReader();
       FDAccount[] temp = new FDAccount[4];
       int i=0;
@@ -20,7 +23,7 @@ public class BankAccountSetTester
             String filename = in.next();
             
             FileInputStream fin = new FileInputStream(filename);
-            ObjectInputStream oin = new ObjectInputStream(fin);
+            oin = new ObjectInputStream(fin);
             for(i=0;i<temp.length;i++)
             {
               	temp[i]=(FDAccount) oin.readObject();

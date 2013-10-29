@@ -13,11 +13,12 @@ import java.io.ObjectInputStream;
 public class BAFileReader {
 	private BankAccount[] bAArray = new BankAccount[4];
 	private int i;
+	private ObjectInputStream oin;
 	public BankAccount[] readIntoObject(String filename)
 	{
 		try{
 			 FileInputStream fin = new FileInputStream(filename);
-	            ObjectInputStream oin = new ObjectInputStream(fin);
+	            oin = new ObjectInputStream(fin);
 	            for(i=0;i<bAArray.length;i++)
 	            {
 	              	bAArray[i]=(BankAccount) oin.readObject();
