@@ -17,7 +17,7 @@ public class BASetReader {
 	public BankAccount[] readFile(String filename)
 	
 		{
-		BankAccount[] bAArray = new BankAccount[4];
+		BankAccount[] bAArray = new BankAccount[5];
 		int i=0;
 		String x = null;
 		try{

@@ -1,6 +1,9 @@
 package package1;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOError;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 public class WriteBankAccount {
@@ -9,7 +12,7 @@ public class WriteBankAccount {
 	{	
 		int i=0;
 		BASetReader reader = new BASetReader();		
-		BankAccount[] bAArray = new BankAccount[4];
+		BankAccount[] bAArray = new BankAccount[5];
 		bAArray = reader.readFile("bankAccountDetailsFile.txt");
 		
 		
@@ -25,9 +28,16 @@ public class WriteBankAccount {
 			oos.close();
 			System.out.println("Done");
 		}
-		catch(Exception e)
+		catch(IOError e)
+		
 		{
-			System.out.println(e);
+		e.printStackTrace();	
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 	}

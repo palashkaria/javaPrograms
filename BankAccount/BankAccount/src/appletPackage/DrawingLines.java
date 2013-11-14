@@ -40,6 +40,11 @@ public void init()
 	
 	 }
 final JPanel draw = new JPanel(){
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4972793489886358657L;
+
 	public void paint(Graphics g){
 		g.setColor( Color.blue );
 		draw.setBackground( Color.black );

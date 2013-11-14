@@ -11,7 +11,7 @@ import java.io.ObjectInputStream;
  *
  */
 public class BAFileReader {
-	private BankAccount[] bAArray = new BankAccount[4];
+	private BankAccount[] bAArray = new BankAccount[5];
 	private int i;
 	private ObjectInputStream oin;
 	public BankAccount[] readIntoObject(String filename)

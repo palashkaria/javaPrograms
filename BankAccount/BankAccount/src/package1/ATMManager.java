@@ -13,7 +13,7 @@ public class ATMManager implements Serializable {
 		
 		int i=0,j=0;
 		//BAFileReader reader = new BAFileReader();
-		BankAccount[] bAArray = new BankAccount[4];
+		BankAccount[] bAArray = new BankAccount[5];
 	    
 	
 	    

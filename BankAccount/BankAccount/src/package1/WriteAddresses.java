@@ -15,7 +15,7 @@ public class WriteAddresses {
 	public static void main(String[] args)
 	{	
 		//create the array from binary file
-		BankAccount[] bAArray = new BankAccount[4];
+		BankAccount[] bAArray = new BankAccount[5];
 		BAFileReader BAf = new BAFileReader();
 		bAArray = BAf.readIntoObject("bankAccountFile.bin");
 		int i=0;
@@ -23,7 +23,7 @@ public class WriteAddresses {
 		//write the addresses from FDArray to addressFile
 		try{
 			FileWriter fw = new FileWriter("addressFile.txt");
-			for(i=0;i<4;i++)
+			for(i=0;i<bAArray.length;i++)
 				{
 				fw.write(bAArray[i].getAddress() + "\n");
 				
